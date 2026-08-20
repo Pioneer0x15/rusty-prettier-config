@@ -124,7 +124,8 @@ function getRustfmtConfigOutput() {
  * Run Prettier from the Rust project root to use that project's rustfmt.toml.
  */
 function getRustfmtConfigLookupPath() {
-    return path.join(process.cwd(), ".rustfmt-config-lookup.rs");
+    // rustfmt uses this path to discover rustfmt.toml; the file does not need to exist.
+    return path.join(process.cwd(), ".rustfmt_config_lookup.rs");
 }
 
 function getPluginCacheDir() {
