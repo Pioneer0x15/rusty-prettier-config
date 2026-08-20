@@ -27,6 +27,8 @@ const config = {
     trailingComma: "all",
     experimentalOperatorPosition: "start",
     proseWrap: "always",
+    // prettier-plugin-sh reads this for sh-like languages; other formatters ignore it.
+    binaryNextLine: false,
     plugins: ensurePluginCache(),
     overrides: [
         {
@@ -50,8 +52,6 @@ const config = {
             ],
             options: {
                 parser: "dockerfile",
-                binaryNextLine: false,
-                spaceRedirects: false,
             },
         },
     ],
