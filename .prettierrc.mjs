@@ -38,7 +38,16 @@ const config = {
         {
             // prettier-plugin-sh Dockerfile language patterns:
             // https://unpkg.com/browse/prettier-plugin-sh@0.19.0/lib/languages.js
-            files: ["Dockerfile", "Containerfile", "*.dockerfile", "*.containerfile"],
+            files: [
+                // Default Dockerfile language patterns.
+                "Dockerfile",
+                "Containerfile",
+                "*.dockerfile",
+                "*.containerfile",
+                // Common name variants such as Dockerfile.dev and Containerfile.prod.
+                "Dockerfile.*",
+                "Containerfile.*",
+            ],
             options: {
                 parser: "dockerfile",
                 binaryNextLine: false,
