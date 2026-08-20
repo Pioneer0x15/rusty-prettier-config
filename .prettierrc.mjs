@@ -30,7 +30,7 @@ const config = {
     plugins: ensurePluginCache(),
     overrides: [
         {
-            files: ["**/*.jsonc"],
+            files: ["*.jsonc"],
             options: {
                 trailingComma: "none",
             },
@@ -38,7 +38,7 @@ const config = {
         {
             // prettier-plugin-sh Dockerfile language patterns:
             // https://unpkg.com/browse/prettier-plugin-sh@0.19.0/lib/languages.js
-            files: ["**/Dockerfile", "**/Containerfile", "**/*.dockerfile", "**/*.containerfile"],
+            files: ["Dockerfile", "Containerfile", "*.dockerfile", "*.containerfile"],
             options: {
                 parser: "dockerfile",
                 binaryNextLine: false,
