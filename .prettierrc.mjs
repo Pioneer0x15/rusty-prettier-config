@@ -158,7 +158,7 @@ function preparePlugin(name, plugin) {
         return {
             ...plugin,
             languages: plugin.languages?.map((language) =>
-                excludeLanguageFilenames(language, ["Cargo.lock"]),
+                excludeLanguageFilenames(language, ["Cargo.toml.orig", /\.lock$/]),
             ),
         };
     }
@@ -262,10 +262,14 @@ function getPluginPackageSpec({ name, version }) {
     return `${name}@${version}`;
 }
 
-function excludeLanguageFilenames(language, filenames) {
+function excludeLanguageFilenames(language, matchers) {
     return {
         ...language,
-        filenames: language.filenames?.filter((filename) => !filenames.includes(filename)),
+        filenames: language.filenames?.filter((filename) =>
+            matchers.every((matcher) =>
+                matcher instanceof RegExp ? !matcher.test(filename) : filename !== matcher,
+            ),
+        ),
     };
 }
 
